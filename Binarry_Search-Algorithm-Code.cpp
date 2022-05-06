@@ -1,50 +1,41 @@
 #include <bits/stdc++.h>
 #include <vector>
-#include <string>
-#include <time.h>
-
+#include <stdbool.h>
 using namespace std;
+	
 
 int main(){
-       int size;
-       	   cout<<" Type the array limit number: ";
-       	   	   cin>>size;
-	   unsigned	long long int num1,vet[size],aux,start=0,end=size,i,conf=0;
-	   
+int A[]={1,3,5,6,7,9,10,14,23},i,j;
+int	size = sizeof(A)/sizeof(A[0]), half, start=0, end=size-1, n1;
 
-	srand( time(NULL));
-	
-	for(i = 1; i <= size; i++){
-		vet[i]=i;		
-		printf("%lld  ", vet[i]);
-	}
-	cout<<endl<<endl;
-	
-	cin>>num1;
-	
-	aux = (start+end) / 2;
-	
-	cout<<endl;
-	
-	for(int j = 1; j <= size; j++){
-		aux = (start+end) / 2;
-		if( aux == num1 ){
-			cout<<"\n\t\a\a  There is in the vector! \n\n";
-			conf=1;
+bool conf = true;	
+	half = (start + end)/2;
+for(j = 0; j < size; j++){
+	cout<<A[j]<<" ";
+}
+cout<<endl<<"Valor a ser procurado: "<<endl;
+
+cin>>n1;	
+  	
+	for(i = 0; i < size ; i++){
+			half = (start + end)/2;
+		if(n1 == A[half] || n1 == A[start] || n1 == A[end]){
+			cout<<"\nAchou...\n";
+			conf = false;
 			break;
-		} if(aux < num1){
-			start = aux;
-		}if(aux > num1){
-			end = aux;
-			
+		}else if(n1 < A[half]){
+				end = half;	
+		}else{
+				start = half;
 		}
 
 	}
 	
-	if(conf==0)
-		cout<<"\n\n\a\a\a So sorry....there is not any "<<num1<<" the vector...\n\n";
-
+	if(conf){
+		cout<<"\n NOT found!..\n";
+	}
+    	
 	
-	
+	cout<<endl;
 	return 0;
 }
